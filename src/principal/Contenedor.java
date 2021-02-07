@@ -9,12 +9,8 @@ import entidades.Capacitacion;
 import java.util.*;
 
 public class Contenedor {
-	
-	Usuario cliente1, profesional1, administrativo1;
-	
 	// LISTA DE INSTANCIAS DE LA INTERFAZ ASESORIA , PUEDE ALMACENAR DISTINTOS TIPOS DE USUARIOS
 	List<Asesoria> listaAsesoria = new ArrayList<Asesoria>();
-	
 	// LISTA DE OBJETOS DE LA CLASE CAPACITACION
 	ArrayList<Capacitacion> listaCapacitacion = new ArrayList<Capacitacion>();
 	Scanner entrada = new Scanner(System.in);
@@ -153,7 +149,7 @@ public class Contenedor {
 	public void listarCapacitaciones(){
 		// Este metidi despliega las capacitaciones registradas en la lista respectiva,
 		// junto con los datos del cliente al que está asociada dicha capacitacion 
-		for ( Capacitacion capacitacion : listaCapacitacion ) {
+		for ( Capacitacion capacitacion : listaCapacitacion  ) {
 			System.out.println(capacitacion);
 		}
 	

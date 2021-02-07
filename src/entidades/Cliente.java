@@ -47,8 +47,7 @@ public class Cliente extends Usuario{
 	public void analizarUsuario() { 	
 	super.analizarUsuario();
 		System.out.println("TIPO DE USUARIO: CLIENTE");
-		System.out.println( "Nombre="+ getNombre()+ ", RUN="+ getRun()+ "\n"+
-			"Dirección="+ getDireccion()+ ", Comuna="+ getComuna() + " ]");
+		System.out.println( "Dirección="+ getDireccion()+ ", Comuna="+ getComuna() + " ]");
 	}
 	
 	// OBTENER SISTEMA DE SALUD: Despliega el tipo de Sistema de Salud del Cliente

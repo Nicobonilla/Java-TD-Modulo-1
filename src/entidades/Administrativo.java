@@ -21,10 +21,10 @@ public class Administrativo extends Usuario {
 	}
 
 	// METODO - ANALIZAR USUARIO: Muestra datos de analizarUsuario() de clase padre, junto con el aárea y su experiencia previa
+	@Override
 	public void analizarUsuario() {
 		System.out.println("TIPO DE USUARIO: ADMINISTRATIVO");
-		System.out.println("Nombre="+ getNombre()+ ", RUN="+ getRun()+
-				", Área="+ getArea()+ ", Experiencia Previa="+ getExperienciaPrevia()+ "]");
+		System.out.println("Área="+ getArea()+ ", Experiencia Previa="+ getExperienciaPrevia());
 	}
 	
 	public String getArea() {

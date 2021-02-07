@@ -37,6 +37,7 @@ public class Usuario implements Asesoria{
 	}
 	
 	// METODO - ANALIZAR USUARIO: Despliega el nombre y RUN
+	@Override
 	public void analizarUsuario() {
 		System.out.println("___________________________________________________");
 		System.out.print( "Nombre: "+ getNombre() + "RUN: "+ getRun());

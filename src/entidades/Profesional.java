@@ -25,6 +25,7 @@ public class Profesional extends Usuario{
 	}
 	
 	// METODO - ANALIZAR USUARIO: Despliega datos de analizarUsiario() padre, junto con el Título y Fecha de Ingreso del profesional
+	@Override
 	public void analizarUsuario() {
 		super.analizarUsuario();
 		System.out.println("TIPO DE USUARIO: PROFESIONAL");

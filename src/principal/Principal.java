@@ -10,32 +10,13 @@ import principal.Contenedor;
 public class Principal {
 
 	public static void main(String[] args) {
-
-		/*
-		cliente = new Cliente();
-		profesional = new Profesional();
-		administrativo = new Administrativo();
-		almacenarProfesional();
-		
-		ArrayList<Usuario> lista = new ArrayList<Usuario>();
-		
-		//"nicolas", "asadaa a", 123123, "titlo", "feIngreso
-		
-		lista.add(profesional1);
-		
-		profesional1.analizarUsuario();*/
-		
-	
-		// TODO Auto-generated method stub
-		
+		// ENTRADA SYSTEM.IN
+		Scanner entrada = new Scanner(System.in);
 		// INSTANCIA DE LA CLASE CONTENEDOR
-		// Lo que creará con ello las dos listas que considera esta clase.
+		Contenedor contenedor = new Contenedor();
 		// MENU PRINCIPAL
-		
 		Integer opMenu = 0;
 		boolean repetir = true;
-		Scanner entrada = new Scanner(System.in);
-		Contenedor contenedor = new Contenedor();
 		do {
 			System.out.println("");
 			System.out.println("");
