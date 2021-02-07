@@ -16,12 +16,15 @@ public class Contenedor {
 	List<Asesoria> listaAsesoria = new ArrayList<Asesoria>();
 	
 	// LISTA DE OBJETOS DE LA CLASE CAPACITACION
-	ArrayList<Capacitacion> listaCapacitaciones = new ArrayList<Capacitacion>();
+	ArrayList<Capacitacion> listaCapacitacion = new ArrayList<Capacitacion>();
 	Scanner entrada = new Scanner(System.in);
 	
+	ArrayList<Usuario> listaUsuario = new ArrayList<Usuario>();
+	ArrayList<Cliente> listaCliente = new ArrayList<Cliente>();
+	ArrayList<Profesional> listaProfesional= new ArrayList<Profesional>();
+	ArrayList<Administrativo> listaAdministrativo = new ArrayList<Administrativo>();
 	
 	// METODOS
-	
 	public void almacenarUsuario() {
 		System.out.println("----- NUEVO USUARIO ----- ");
 		Usuario usuario = new Usuario();
@@ -31,6 +34,7 @@ public class Contenedor {
 		usuario.setFeNac(entrada.nextLine());
 		System.out.print("RUN: ");
 		usuario.setRun(entrada.nextInt());
+		listaUsuario.add(usuario);
 		}
 	// 1.- ALMACENAR CLIENTE
 	public void almacenarCliente(){
@@ -58,6 +62,7 @@ public class Contenedor {
 			System.out.print("Edad: ");
 			cliente.setEdad(entrada.nextInt()); 
 			listaAsesoria.add(cliente);
+			listaCliente.add(cliente);
 	}
 	// 2.- ALMACENAR PROFESIONAL
 	public void almacenarProfesional() {
@@ -69,6 +74,7 @@ public class Contenedor {
 		System.out.print("FECHA DE INGRESO: ");
 		profesional.setFeIngreso(entrada.next());
 		listaAsesoria.add(profesional);
+		listaProfesional.add(profesional);
 		}
 	// 3.- ALMACENAR ADMINISTRATIVO
 	public void almacenarAdministrativo(){
@@ -80,6 +86,7 @@ public class Contenedor {
 		System.out.print("EXPERIENCIA PREVIA: ");
 		administrativo.setExperienciaPrevia(entrada.next());
 		listaAsesoria.add(administrativo);
+		listaAdministrativo.add(administrativo);
 		}
 	// 4.- ALMACENAR CAPACITACION
 	public void almacenarCapacitacion(){
@@ -97,36 +104,59 @@ public class Contenedor {
 		capacitacion.setDuracion(entrada.next());
 		System.out.print("CANTIDAD ASISTENTES:: ");
 		capacitacion.setRutCliente(entrada.nextInt());
-		listaCapacitaciones.add(capacitacion);
+		listaCapacitacion.add(capacitacion);
 	}
 	// 5.- ELIMINAR USUARIO
 	//public String eliminarUsuario(){
 		// Permite eliminar un usuario desde la lista de interfaces de Asesoria, de acuerdo con el RUN del usuario
 
 	//}
-	// 6.- LISTAR USUARIOS
+	// 6.- LISTAR USUARIOS : Despliegue de los datos de usuario
 	public void listarUsuarios(){
-		
-		for (Asesoria asesoria : listaAsesoria) {
-			System.out.println(asesoria);
-			
-				
+		for (Usuario usuario : listaUsuario) {
+			System.out.println(usuario);
 			}
-			
 		}
-		// permite desplegar la lista completa de usuarios, independiente del tipo. 
-		//En este metodo solo se deben desplegar los datos de la clase usuario
-		
-	}
-	// 7.- LISTAR USUARIOS POR TIPO
-	//public String listarUsuariosPorTipo(){
-		// Recibe un tipo de usuario ( cliente, administrador o profesional), 
+
+	// 7.- LISTAR USUARIOS POR TIPO 
+	public void listarUsuariosPorTipo(){
+		// Recibe un tipo de usuario ( cliente, administrador o profesional)
+		System.out.println("------- LISTA DE USUARIO POR TIPO  DE PERFIL -------");
+		System.out.println(" 1.- CLIENTE");
+		System.out.println(" 2.- PROFESIONAL");
+		System.out.println(" 3.- ADMINISTRATIVO");
+		System.out.println("Ingrese el perfil deseado: ");
+		Integer opcion = entrada.nextInt();
 		// y retorla los datos respectivos según el tipo de usuario.
-		
-	//}
+		switch (opcion) {
+			case 1: // PERFIL CLIENTE
+				for (Asesoria cliente : listaCliente) {
+					System.out.println(cliente);
+				}
+				break;
+			case 2:
+				for (Profesional profesional : listaProfesional) {
+					System.out.println(profesional);
+					}
+				break;
+			case 3:
+				for (Administrativo administrativo : listaAdministrativo ) {
+					System.out.println( administrativo );
+					}
+				break;
+			default:
+				System.out.println(" Debe ingresar una opción valida! ");
+				break;
+		}
+	}
 	// 8.- LISTAR CAPACITACIONES
-	//public String listarCapacitaciones(){
+	public void listarCapacitaciones(){
 		// Este metidi despliega las capacitaciones registradas en la lista respectiva,
-		// junto con los datos del cliente al que está asociada dicha capacitacion */
-	//}
+		// junto con los datos del cliente al que está asociada dicha capacitacion 
+		for ( Capacitacion capacitacion : listaCapacitacion ) {
+			System.out.println(capacitacion);
+		}
+	
+	}
+
 }

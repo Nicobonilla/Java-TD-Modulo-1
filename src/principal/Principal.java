@@ -37,6 +37,9 @@ public class Principal {
 		Scanner entrada = new Scanner(System.in);
 		Contenedor contenedor = new Contenedor();
 		do {
+			System.out.println("");
+			System.out.println("");
+			System.out.println("");
 			System.out.println(" --------------------SISTEMA DE INFORMACIÓN -------------------- ");
 			System.out.println("'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''");
 			System.out.println("");
@@ -51,7 +54,7 @@ public class Principal {
 			System.out.println(" 8.- Listar capacitaciones");
 			System.out.println(" 9.- Salir");
 			System.out.println("''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''");
-			System.out.println("");
+			System.out.print("OPCIÓN: ")	;
 			opMenu = entrada.nextInt();
 		
 		switch (opMenu) {
@@ -61,24 +64,25 @@ public class Principal {
 			case 2 : // ALMACENAR PROFESIONAL
 				contenedor.almacenarProfesional();
 				break;
-			/*case 3 : // ALMACENAR ADMINISTRATIVO
-				contenedor.almacenarAdministraivo();
+			case 3 : // ALMACENAR ADMINISTRATIVO
+				contenedor.almacenarAdministrativo();
 				break;
 			case 4 : // ALMACENAR CAPACITACION
 				contenedor.almacenarCapacitacion();
 				break;
-			case 5 : // ELIMINAR USUARIO
-				contenedor.eliminarUsuario(Integer run);
-				break;*/
+			//case 5 : // ELIMINAR USUARIO
+				//contenedor.eliminarUsuario(Integer run);
+				//break;
 			case 6 : // LISTAR USUARIOS
 				contenedor.listarUsuarios();
-				break;/*
+				break;
 			case 7 : // LISTAR USUARIO POR TIPO
-				contenedor.listarUsuariosPorTipo(String tipoUsuario);
+				
+				contenedor.listarUsuariosPorTipo();
 				break;
 			case 8 : // LISTAR CAPACITACIONES
-				contenedor.listarCapacitacion()
-				break;*/
+				contenedor.listarCapacitaciones();
+				break;
 			case 9 : // SALIR
 				repetir = false;
 				break;
