@@ -1,6 +1,9 @@
 package entidades;
+import java.util.*;
 
-public class Capacitacion {
+import principal.Asesoria;
+
+public class Capacitacion extends Usuario implements Asesoria {
 
 	Integer idCapacitacion; // obligatorio, numero interno
 	Integer rutCliente; // obligatorio
@@ -32,7 +35,26 @@ public class Capacitacion {
 		this.duracion = duracion;
 		this.cantidadAsistentes = cantidadAsistentes;
 	}
-
+	// IMPLEMENTACION INTERFACE ASESORIA
+	Scanner entrada = new Scanner(System.in);
+	@Override
+	public void ingresar() {
+		System.out.println("----- INGRESANDO NUEVA CAPACITACIÓN ----- ");
+		setIdCapacitacion(idCapacitacion);
+		System.out.print("RUT CLIENTE: ");
+		setRutCliente(entrada.nextInt());
+		System.out.print("DIA: ");
+		setDia(entrada.next());
+		System.out.print("HORA: ");
+		setHora(entrada.next());
+		System.out.print("LUGAR: ");
+		setLugar(entrada.nextLine());
+		System.out.print("DURACION: ");
+		setDuracion(entrada.next());
+		System.out.print("CANTIDAD ASISTENTES:: ");
+		setRutCliente(entrada.nextInt());
+	}
+	
 	// METODO - MOSTRAR DETALLE
 	public String mostrarDetalle(){ 
 		return "La capacitación será en "+ getLugar() + " a las "+ getHora() + " del día "+ getDia() + ", y durará "+ getDuracion() +" minutos";

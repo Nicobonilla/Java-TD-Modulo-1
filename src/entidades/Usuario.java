@@ -1,32 +1,53 @@
 package entidades;
 import java.util.*;
 
+import principal.Asesoria;
+
 // CLASE DEBE IMPLEMENTAR LA INTERFAZ Asesoria
 public class Usuario implements Asesoria{
-	
-	String nombre;  // obligatorio, min 10 car max 50
-	String feNac; //obligaatorio, data o string no matter, DD/MM/AAAA
-	Integer run; // run < 99.999.999	
-	Scanner entrada = new Scanner(System.in);
-
-	@Override
-	public String toString() {
-		return "Usuario [nombre=" + nombre + ", feNac=" + feNac + ", run=" + run + "]";
-	}
-
+	// ATRIBUTOS
+	private String nombre;  // obligatorio, min 10 car max 50
+	private String feNac; //obligaatorio, data o string no matter, DD/MM/AAAA
+	private Integer run; // run < 99.999.999	
+	private Scanner entrada = new Scanner(System.in);
+	// CONSTRUCTOR VACIO
 	public Usuario() {
-		super();
 	}
-
+	// CONSTRUCTOR COMPLETO
 	public Usuario(String nombre, String feNac, Integer run) {
-		super();
 		this.nombre = nombre;
 		this.feNac = feNac;
 		this.run = run;
 	}
-	
-	
-	// METODO - MOSTRAR EDAD
+	// TO STRING
+	@Override
+	public String toString() {
+		return "Usuario [nombre=" + nombre + ", feNac=" + feNac + ", run=" + run + "]";
+	}
+	// IMPLEMENTACION INTERFACE ASESORIA
+	@Override
+	public void analizarUsuario() {
+		// TODO Auto-generated method stub
+		System.out.println("___________________________________________________");
+		System.out.print( "Nombre: "+ getNombre() + "RUN: "+ getRun());
+		System.out.println("..                                               ..");
+	}
+	// METODOS - INGRESAR
+	public void ingresar() {
+		System.out.println("----- NUEVO USUARIO ----- ");
+		System.out.print("NOMBRE: ");
+		setNombre(entrada.nextLine());
+		System.out.print("FECHA DE NACIMIENTO: ");
+		setFeNac(entrada.nextLine());
+		System.out.print("RUN: ");
+		setRun(entrada.nextInt());
+		}
+	// MOSTRAR
+	@Override
+	public void mostrar() {
+		System.out.println("Usuario[ Nombre:"+ getNombre() +", Fecha de Nacimiento: "+ getFeNac()+ ", RUN: "+ getRun()+ "]");
+		}
+	// MOSTRAR EDAD
 	public void mostrarEdad() {
 		String[] fechas = new String[3];
 		fechas = getFeNac().split("/");
@@ -35,17 +56,7 @@ public class Usuario implements Asesoria{
 		Integer añoActual = now.get(Calendar.YEAR);
 		System.out.println("El usuario tiene "+( añoActual - añoNacimiento) +" años"); 
 	}
-	
-	// METODO - ANALIZAR USUARIO: Despliega el nombre y RUN
-	@Override
-	public void analizarUsuario() {
-		System.out.println("___________________________________________________");
-		System.out.print( "Nombre: "+ getNombre() + "RUN: "+ getRun());
-		System.out.println("..                                               ..");
-
-	}
-	
-
+	// GETTERS AND SETTERS
 	public String getNombre() {
 		return nombre;
 	}
@@ -70,4 +81,6 @@ public class Usuario implements Asesoria{
 	public void setRun(Integer run) {
 		this.run = run;
 	}
+
+	
 }

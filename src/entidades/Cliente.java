@@ -1,31 +1,27 @@
 package entidades;
+import java.util.*;
 
 public class Cliente extends Usuario{
-	
-	Integer rut;  // run < 99.999.999 
-	String nombres; // obligatori, min 5 max 30
-	String apellidos; // obligatori, min 5 max 30
-	String telefono; // obligatorio
-	String afp; // min 4 car, max 30
-	Integer sisSalud; // 1 : Fonasa ; 2 : Isapre
-	String direccion; // max 70 car
-	String comuna; // max 40 car
-	Integer edad; // obligatorio, n >= 0 && n < 150
-	
-	@Override
-	public String toString() {
-		return "Cliente [rut=" + rut + ", nombres=" + nombres + ", apellidos=" + apellidos + ", telefono=" + telefono
-				+ ", afp=" + afp + ", sisSalud=" + sisSalud + ", direccion=" + direccion + ", comuna=" + comuna
-				+ ", edad=" + edad + "]";
-	}
-	
+	// ATRIBUTOS
+	private Integer rut;  // run < 99.999.999 
+	private String nombres; // obligatori, min 5 max 30
+	private String apellidos; // obligatori, min 5 max 30
+	private String telefono; // obligatorio
+	private String afp; // min 4 car, max 30
+	private Integer sisSalud; // 1 : Fonasa ; 2 : Isapre
+	private String direccion; // max 70 car
+	private String comuna; // max 40 car
+	private Integer edad; // obligatorio, n >= 0 && n < 150
+	// CONSTRUCTORES
 	public Cliente() {
 		super();
 	}
-
-	public Cliente(Integer rut, String nombres, String apellidos, String telefono, String afp, Integer sisSalud,
+	public Cliente(String nombre, String feNac, Integer run) {
+		super( nombre, feNac, run);
+	}
+	public Cliente(String nombre, String feNac, Integer run, Integer rut, String nombres, String apellidos, String telefono, String afp, Integer sisSalud,
 			String direccion, String comuna, Integer edad) {
-		super();
+		super( nombre, feNac, run);
 		this.rut = rut;
 		this.nombres = nombres;
 		this.apellidos = apellidos;
@@ -36,20 +32,60 @@ public class Cliente extends Usuario{
 		this.comuna = comuna;
 		this.edad = edad;
 	}
+	// TO STRING
 	
-	// OBTENER NOMBRE: Obtiene Nombre y Apellidos del cliente
-	public String obtenerNombre() {
-		return getNombre()+ " "+ getApellidos();
-	}
-	
-	// ANALIZAR USUARIO : Despliega los datos de la clase padre, direccion y comuna del cliente.
 	@Override
+	public String toString() {
+		return "Cliente [ rut="  + rut + ", nombres=" + nombres + ", apellidos=" + apellidos + ", telefono=" + telefono
+				+ ", afp=" + afp + ", sisSalud=" + sisSalud + ", direccion=" + direccion + ", comuna=" + comuna
+				+ ", edad=" + edad + "]";
+	}
+	// IMPLEMENTACION INTERFACE ASESORIA
 	public void analizarUsuario() { 	
 	super.analizarUsuario();
 		System.out.println("TIPO DE USUARIO: CLIENTE");
 		System.out.println( "Dirección="+ getDireccion()+ ", Comuna="+ getComuna() + " ]");
 	}
-	
+	// METODOS - INGRESAR
+	Scanner entrada = new Scanner(System.in);
+	@Override
+	public void ingresar() {
+		super.ingresar();
+		System.out.println("----- INGRESANDO DATOS PERFIL CLIENTE ----- ");
+		System.out.print("RUT: "); 
+		setRut(entrada.nextInt());
+		entrada.nextLine();
+		System.out.print("Nombres: ");
+		setNombres(entrada.nextLine());
+		System.out.print("Apellidos: ");
+		setApellidos(entrada.nextLine());
+		System.out.print("Telefono: ");
+		setTelefono(entrada.nextLine());
+		System.out.print("AFP: ");
+		setAfp(entrada.nextLine());
+		System.out.print("Sistema de Salud (1: Fonasa - 2 : Isapre ) : ");
+		setSisSalud(entrada.nextInt());
+		entrada.nextLine();
+		System.out.print("Dirección: ");
+		setDireccion(entrada.nextLine());
+		System.out.print("Comuna: ");
+		setComuna(entrada.nextLine());
+		System.out.print("Edad: ");
+		setEdad(entrada.nextInt()); 
+		entrada.nextLine();
+	}
+	// MOSTRAR
+	@Override
+	public void mostrar() {
+		super.mostrar();
+		System.out.println("CLIENTE[ RUT: "+ getRut()+ "Nombres: "+ getNombres()+ ", Apellidos: "+ getApellidos()+ 
+				", Telefono: "+ getTelefono()+ ", AFP: "+ getAfp()+", Sistema de Salud: "+ getSisSalud()+
+				", Dirección"+ getDireccion()+ ", Comuna: "+ getComuna()+ ", Edad: "+ getEdad());
+		}
+	// OBTENER NOMBRE: Obtiene Nombre y Apellidos del cliente
+	public String obtenerNombre() {
+		return getNombre()+ " "+ getApellidos();
+	}	
 	// OBTENER SISTEMA DE SALUD: Despliega el tipo de Sistema de Salud del Cliente
 	public String obtenerSistemaSalud( Integer sisSalud ) {
 		String respuesta = "";

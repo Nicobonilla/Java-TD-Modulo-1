@@ -1,11 +1,13 @@
 package principal;
 import java.text.SimpleDateFormat;
 import java.util.*;
-import entidades.Administrativo;
+import entidades.Usuario;
 import entidades.Cliente;
 import entidades.Profesional;
-import entidades.Usuario;
+import entidades.Administrativo;
+import entidades.Capacitacion;
 import principal.Contenedor;
+
 
 public class Principal {
 
@@ -35,43 +37,54 @@ public class Principal {
 			System.out.println(" 8.- Listar capacitaciones");
 			System.out.println(" 9.- Salir");
 			System.out.println("''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''");
-			System.out.print("OPCIÓN: ")	;
+			System.out.print("OPCIÓN: ");
 			opMenu = entrada.nextInt();
 		
+		Asesoria cliente, profesional, administrativo;
 		switch (opMenu) {
 			case 1 : //ALMACENAR CLIENTE
-				contenedor.almacenarCliente();
-					break;
+				cliente = new Cliente();
+				cliente.ingresar();
+				contenedor.almacenarCliente(cliente);
+				break;
 			case 2 : // ALMACENAR PROFESIONAL
-				contenedor.almacenarProfesional();
+				profesional = new Profesional();
+				profesional.ingresar();
+				contenedor.almacenarProfesional(profesional);
 				break;
 			case 3 : // ALMACENAR ADMINISTRATIVO
-				contenedor.almacenarAdministrativo();
+				administrativo = new Administrativo();
+				administrativo.ingresar();
+				contenedor.almacenarAdministrativo(administrativo);
 				break;
 			case 4 : // ALMACENAR CAPACITACION
-				contenedor.almacenarCapacitacion();
+				Capacitacion capacitacion = new Capacitacion();
+				capacitacion.ingresar();
+				contenedor.almacenarCapacitacion(capacitacion );
 				break;
-			//case 5 : // ELIMINAR USUARIO
-				//contenedor.eliminarUsuario(Integer run);
-				//break;
+			case 5 : // ELIMINAR USUARIO
+				System.out.print("INGRESE RUN DE USUARIO A ELIMINAR: ");
+				Integer runn = entrada.nextInt();
+				contenedor.eliminarUsuario(runn);
+				break;
 			case 6 : // LISTAR USUARIOS
 				contenedor.listarUsuarios();
 				break;
 			case 7 : // LISTAR USUARIO POR TIPO
-				
 				contenedor.listarUsuariosPorTipo();
 				break;
 			case 8 : // LISTAR CAPACITACIONES
 				contenedor.listarCapacitaciones();
 				break;
 			case 9 : // SALIR
+				System.out.println(" USTED SALIÓ DEL SISTEMA");
 				repetir = false;
 				break;
 			default:
 				System.out.println("Debe ingresar una opción válida!");
 				break;
 			}
-		}while ( repetir );
+		}while ( repetir );	
 	}
 }
 

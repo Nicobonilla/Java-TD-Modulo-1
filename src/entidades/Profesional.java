@@ -1,43 +1,52 @@
 package entidades;
 
-public class Profesional extends Usuario{
+import java.util.Scanner;
 
-	String titulo; // obligatorio, min 10 car, max 50
-	String feIngreso; // independiente declaracion( fecha || string ) fromato = DD//MM/AAAAA
-	
-	@Override
-	public String toString() {
-		return "Profesional [titulo=" + titulo + ", feIngreso=" + feIngreso + "]";
-	}
-
+public class Profesional extends Usuario {
+	// ATRIBUTOS
+	private String titulo; // obligatorio, min 10 car, max 50
+	private String feIngreso; // independiente declaracion( fecha || string ) fromato = DD//MM/AAAAA
+	// CONSTRUCTORES
 	public Profesional() {
 		super();
 	}
-	
 	public Profesional(String nombre, String feNac, Integer run) {
 		super(nombre, feNac, run);
 	}
-	
 	public Profesional(String nombre, String feNac, Integer run, String titulo, String feIngreso) {
 		super(nombre, feNac, run);
 		this.titulo = titulo;
 		this.feIngreso = feIngreso;
 	}
-	
-	// METODO - ANALIZAR USUARIO: Despliega datos de analizarUsiario() padre, junto con el Título y Fecha de Ingreso del profesional
+	@Override
+	public String toString() {
+		return "Profesional [ titulo=" + titulo + ", feIngreso=" + feIngreso + "]";
+	}
+	// IMPLEMENTACION DE INTERFACE ASESORIA
 	@Override
 	public void analizarUsuario() {
 		super.analizarUsuario();
 		System.out.println("TIPO DE USUARIO: PROFESIONAL");
-		System.out.println("Nombre="+ getNombre()+ ", RUN="+ getRun()+ "\n" +
-				", Titulo="+ getTitulo()+ ", Fecha de Ingreso="+ getFeIngreso()+ "]");
+		System.out.println(" Titulo="+ getTitulo()+ ", Fecha de Ingreso="+ getFeIngreso()+ "]");
 	}
-	
-	public void almacenarProfesional (String nombre, String feNac, Integer run, String titulo, String feIngreso) {	
-		this.titulo = titulo;
-		this.feIngreso = feIngreso;
+	// METODOS - INGRESAR
+	@Override
+	public void ingresar() {
+		Scanner entrada = new Scanner(System.in);
+		super.ingresar();
+		entrada.nextLine();
+		System.out.println("----- INGRESANDO DATOS PERFIL PROFESIONAL ----- ");
+		System.out.print("TITULO: ");
+		setTitulo(entrada.nextLine());
+		System.out.print("FECHA DE INGRESO: ");
+		setFeIngreso(entrada.next());
 	}
-
+	// MOSTRAR
+	public void mostrar() {
+		super.mostrar();
+		System.out.println(" PROFESIONAL [ Titulo: "+ getTitulo()+ ", Fecha de Ingreso: "+ getFeIngreso() + " ]");
+	}
+	// GETTERS AND SETTERS
 	public String getTitulo() {
 		return titulo;
 	}
