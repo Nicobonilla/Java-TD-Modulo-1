@@ -1,7 +1,13 @@
 package entidades;
-
+/**
+ * La clase Clientes es hija de la clase Usuario
+ * @author nbnla
+ *
+ */
 public class Cliente extends Usuario{
+	//----------------------------------------------------------------------------
 	// ATRIBUTOS
+	//----------------------------------------------------------------------------
 	private Integer rut;  // run < 99.999.999 
 	private String nombres; // obligatori, min 5 max 30
 	private String apellidos; // obligatori, min 5 max 30
@@ -11,14 +17,23 @@ public class Cliente extends Usuario{
 	private String direccion; // max 70 car
 	private String comuna; // max 40 car
 	private Integer edad; // obligatorio, n >= 0 && n < 150
+
+	//----------------------------------------------------------------------------
 	// CONSTRUCTORES
+	//----------------------------------------------------------------------------
+
 	public Cliente() {
 		super();
 	}
-	public Cliente(String nombre, String feNac, Integer run) {
+	// CONSTRUCTOR MÍNIMO, INCLUYE SU CLASE PADRE: USUARIO, 
+	//Y LOS ATRIBUTOS OBLIGATORIOS
+	public Cliente(String nombre, String feNac, Integer run, String nombres, 
+			String apellidos, String telefono, Integer edad) {
 		super( nombre, feNac, run);
 	}
-	public Cliente(String nombre, String feNac, Integer run, Integer rut, String nombres, String apellidos, String telefono, String afp, Integer sisSalud,
+	// COMPLETO
+	public Cliente(String nombre, String feNac, Integer run, Integer rut, String nombres, 
+			String apellidos, String telefono, String afp, Integer sisSalud,
 			String direccion, String comuna, Integer edad) {
 		super( nombre, feNac, run);
 		this.rut = rut;
@@ -32,21 +47,27 @@ public class Cliente extends Usuario{
 		this.edad = edad;
 	}
 	// TO STRING
-	
 	@Override
 	public String toString() {
-		return "Cliente [ rut="  + rut + ", nombres=" + nombres + ", apellidos=" + apellidos + ", telefono=" + telefono
-				+ ", afp=" + afp + ", sisSalud=" + sisSalud + ", direccion=" + direccion + ", comuna=" + comuna
+		return "Cliente [ rut="  + rut + ", nombres=" + nombres + ", apellidos=" 
+				+ apellidos + ", telefono=" + telefono+ ", afp=" + afp + ", sisSalud="
+				+ sisSalud + ", direccion=" + direccion + ", comuna=" + comuna
 				+ ", edad=" + edad + "]";
 	}
+	//----------------------------------------------------------------------------
 	// IMPLEMENTACION INTERFACE ASESORIA
+	//----------------------------------------------------------------------------
+
 	public void analizarUsuario() { 	
 	super.analizarUsuario();
 		System.out.println("TIPO DE USUARIO: CLIENTE");
 		System.out.println( "Dirección="+ getDireccion()+ ", Comuna="+ getComuna() + " ]");
 	}
+	//----------------------------------------------------------------------------
+	// METODOS
+	//----------------------------------------------------------------------------
+	
 	// MOSTRAR
-	@Override
 	public void mostrar() {
 		super.mostrar();
 		System.out.println("CLIENTE[ RUT: "+ getRut()+ "Nombres: "+ getNombres()+ ", Apellidos: "+ getApellidos()+ 

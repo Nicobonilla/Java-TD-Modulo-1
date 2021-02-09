@@ -1,15 +1,28 @@
 package entidades;
-import java.util.*;
-
+/**
+ * La clase Administrativo es clase hija de Usuarios.
+ * @author nbnla
+ *
+ */
 public class Administrativo extends Usuario {
+	//----------------------------------------------------------------------------
 	// ATRIBUTOS
+	//----------------------------------------------------------------------------
 	private String area; // min 5 car, max 20
 	private String experienciaPrevia; // max 100 car
+	
+	//----------------------------------------------------------------------------
 	// CONSTRUCTORES
+	//----------------------------------------------------------------------------
 	public Administrativo () {
 		super();
 	}
+	// MINIMO CON CLASE PADRE
 	public Administrativo(String nombre, String feNac, Integer run) {
+		super(nombre, feNac, run);
+	}
+	// MINIMO CON CLASE PADRE Y ATRIBUTOS OBLIGATORIOS
+	public Administrativo(String nombre, String feNac, Integer run, String area) {
 		super(nombre, feNac, run);
 	}
 	public Administrativo(String nombre, String feNac, Integer run, String area, String experienciaPrevia) {
@@ -21,13 +34,17 @@ public class Administrativo extends Usuario {
 	public String toString() {
 		return "Administrativo [ area=" + area + ", experienciaPrevia=" + experienciaPrevia +"]";
 	}
-	// IMPLEMENTACION DE INTERFACE ASESORIA
+	//----------------------------------------------------------------------------
+	// IMPLEMENTACION INTERFACE ASESORIA
+	//----------------------------------------------------------------------------
 	@Override
 	public void analizarUsuario() {
 		System.out.println("TIPO DE USUARIO: ADMINISTRATIVO");
 		System.out.println("Área="+ getArea()+ ", Experiencia Previa="+ getExperienciaPrevia());
 	}
-
+	//----------------------------------------------------------------------------
+	// METODOS
+	//----------------------------------------------------------------------------
 	// MOSTRAR
 	public void mostrar() {
 		super.mostrar();
@@ -49,8 +66,5 @@ public class Administrativo extends Usuario {
 	public void setExperienciaPrevia(String experienciaPrevia) {
 		this.experienciaPrevia = experienciaPrevia;
 	}
-	
-	
-	
-	
+
 }

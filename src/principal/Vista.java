@@ -6,9 +6,21 @@ import entidades.Administrativo;
 import entidades.Capacitacion;
 import principal.ServicioValidacion; 
 import java.util.*;
+/**
+ * En esta clase se encuentra mayormente la parte que interactua el software con el usuario
+ * @author nbnla
+ *
+ */
+
 public class Vista {
+	// SE INSTANCIA SEVICIOVALIDACION PARA HACER LAS VALIDACIONES PERTINENTES
 	ServicioValidacion sv = new ServicioValidacion();
 	Scanner entrada = new Scanner(System.in);
+	/**
+	 * La funcion ingresarUsuario permite ingresar los atributos de la clase 
+	 * Usuario al sistema
+	 * @return Retorna un objeto de clase Usuario
+	 */
 	public Usuario ingresarUsuario(){
 		System.out.println("----- NUEVO USUARIO ----- ");
 		System.out.print("NOMBRE: ");
@@ -20,10 +32,16 @@ public class Vista {
 		System.out.print("RUN: ");
 		Integer run = entrada.nextInt();
 		sv.validacionNumero(run, "Run", 0, 99999999); // RESTRICCION 99.999.999
+		// Una vez validados los datos se instancian y gurdan en el objeto usuario
 		Usuario usuario = new Usuario(nombre, feNac, run);
 		return usuario;
 	}
-	
+	/**
+	 * La funcion ingresarCliente permite ingresar los atributos de la clase
+	 * Cliente al sistema
+	 * @param usuario. Objeto de la clase Usuario
+	 * @return Retorna un objeto de la clase Cliente
+	 */
 	public Cliente ingresarCliente(Usuario usuario) {
 		String nombre = usuario.getNombre();
 		String feNac = usuario.getFeNac();
@@ -59,11 +77,18 @@ public class Vista {
 		Integer edad = entrada.nextInt(); 
 		sv.validacionNumero(run, "Run", 0, 150); //  RESTRICCION MAXIMO
 		entrada.nextLine();
-		Cliente cliente = new Cliente(nombre, feNac, run, rut, nombres, apellidos, telefono, afp, sisSalud, direccion, comuna, edad);
+		// Una vez validados los datos se instancian y gurdan en el objeto cliente
+		Cliente cliente = new Cliente(nombre, feNac, run, rut, nombres, apellidos, 
+				telefono, afp, sisSalud, direccion, comuna, edad);
 		cliente.analizarUsuario();
 		return cliente;
 	}
-	
+	/**
+	 * El metodo ingresarProfesional permite ingresar los atributos de los usuarios
+	 * Profesional al sistema
+	 * @param Como parametro utiliza un objeto de la clase Usuario
+	 * @return un objeto de clase Profesional
+	 */
 	public Profesional ingresarProfesional(Usuario usuario) {
 		String nombre = usuario.getNombre();
 		String feNac = usuario.getFeNac();
@@ -76,10 +101,16 @@ public class Vista {
 		System.out.print("FECHA DE INGRESO: ");
 		String feIngreso = entrada.next();
 		sv.validacionFecha(feNac, "Fecha de Ingreso: ");
+		// Una vez validados los datos se instancia y gurdan en el objeto profesional
 		Profesional profesional = new Profesional(nombre, feNac, run, titulo, feIngreso);
 		return profesional;
 	}
-
+	/**
+ 	*El metodo ingresarAdministrativo permite ingresar los atributos de los usuarios
+	 * Administrativo al sistema
+	 * @param Como parametro utiliza un objeto de la clase Usuario
+	 * @return un objeto de clase Administrativo
+	 */
 	public Administrativo ingresarAdministrativo(Usuario usuario) {
 		String nombre = usuario.getNombre();
 		String feNac = usuario.getFeNac();
@@ -92,15 +123,20 @@ public class Vista {
 		System.out.print("EXPERIENCIA PREVIA: ");
 		String experienciaPrevia = entrada.nextLine();
 		sv.resTmaxmin(experienciaPrevia, "Experiencia Previa", 0, 100); //RESTRICCION MAX MIN
+		// Una vez validados los datos se instancia y gurdan en el objeto administrativo
 		Administrativo administrativo = new Administrativo(nombre, feNac, run, area, experienciaPrevia);
 		return administrativo;
 	}
-	
+	 /**
+ 	 *El metodo ingresarCapacitacion permite ingresar las capacitaciones al sistema
+	 * @return un objeto de clase Capacitacion
+	 */
 	public Capacitacion ingresarCapacitacion() {
 		System.out.println("----- INGRESANDO NUEVA CAPACITACIÓN ----- ");
-		Integer setIdCapacitacion = 1;// ++= ultimo;
+		System.out.println("Ingrese ID de la Capacitacion");
+		Integer setIdCapacitacion = 1;// += ultimo;
 		setIdCapacitacion = entrada.nextInt();
-		sv.numObligatorio(setIdCapacitacion, "ID Capacitacion");
+		sv.numObligatorio(setIdCapacitacion, "ID Capacitacion"); //  RESTRCCION
 		System.out.print("RUT CLIENTE: ");
 		Integer rutCliente = entrada.nextInt();
 		sv.numObligatorio(setIdCapacitacion, "RUT Cliente"); // VALIDACION MENOR A 99.999.999
@@ -109,8 +145,9 @@ public class Vista {
 		sv.vDia(dia,"Dia"); 			// VALIDACION DIA DE LA SEMANA
 		System.out.print("HORA: ");
 		String hora = entrada.next();	// VALIDACION HORA
-		
+		sv.vHora(hora);
 		System.out.print("LUGAR: ");
+		entrada.nextLine();
 		String lugar = entrada.nextLine();
 		sv.resTmaxmin(lugar, "Lugar", 10, 50); //RESTRICCION MAX MIN
 		System.out.print("DURACION: ");
@@ -119,7 +156,7 @@ public class Vista {
 		System.out.print("CANTIDAD ASISTENTES:: ");
 		Integer cantidadAsistentes = entrada.nextInt();
 		sv.validacionNumero(cantidadAsistentes, "Cantidad de Asistentes", 0, 1000); // RESTRICCION NUMERO
-		
+		// Una vez validados los datos se instancia y guardan en el objeto capacitacion
 		Capacitacion capacitacion = new Capacitacion(setIdCapacitacion, rutCliente, dia, hora, lugar, duracion, cantidadAsistentes);
 		return capacitacion;
 	}

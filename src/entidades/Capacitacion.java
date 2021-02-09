@@ -2,28 +2,36 @@ package entidades;
 import java.util.*;
 
 import principal.Asesoria;
-
+/**
+ * Esta clase 
+ * @author nbnla
+ *
+ */
 public class Capacitacion extends Usuario implements Asesoria {
-
-	Integer idCapacitacion; // obligatorio, numero interno
-	Integer rutCliente; // obligatorio
-	String dia; // dia de la semana. Valor entre "Lunes" y "Domingo" (en ese formator)
-	String hora; // formato HH:MM ( hor entre 0 a 23, minutos 0 a 59 )
-	String lugar; // obligatorio, min 10 car max 50
-	String duracion; // max 70 car
-	Integer cantidadAsistentes; // obligatorio, numero entero menor que 1000
+	//----------------------------------------------------------------------------
+	// ATRIBUTOS
+	//----------------------------------------------------------------------------
+	private Integer idCapacitacion; // obligatorio, numero interno
+	private Integer rutCliente; // obligatorio
+	private String dia; // dia de la semana. Valor entre "Lunes" y "Domingo" (en ese formator)
+	private String hora; // formato HH:MM ( hor entre 0 a 23, minutos 0 a 59 )
+	private String lugar; // obligatorio, min 10 car max 50
+	private String duracion; // max 70 car
+	private Integer cantidadAsistentes; // obligatorio, numero entero menor que 1000
 	
-	@Override
-	public String toString() {
-		return "Capacitacion [idCapacitacion=" + idCapacitacion + ", rutCliente=" + rutCliente + ", dia=" + dia
-				+ ", hora=" + hora + ", lugar=" + lugar + ", duracion=" + duracion + ", cantidadAsistentes="
-				+ cantidadAsistentes + "]";
-	}
+	//----------------------------------------------------------------------------
+	// CONSTRUCTORES
+	//----------------------------------------------------------------------------
 
 	public Capacitacion() {
-		super();
 	}
-
+	// MINIMO CON LOS ATRIBUTOS OBLIGATORIOS
+	public Capacitacion(Integer idCapacitacion, Integer rutCliente, String lugar) {
+		this.idCapacitacion = idCapacitacion;
+		this.rutCliente = rutCliente;
+		this.lugar = lugar;
+	}
+	// COMPLETO
 	public Capacitacion(Integer idCapacitacion, Integer rutCliente, String dia, String hora, String lugar,
 			String duracion, Integer cantidadAsistentes) {
 		super();
@@ -35,14 +43,20 @@ public class Capacitacion extends Usuario implements Asesoria {
 		this.duracion = duracion;
 		this.cantidadAsistentes = cantidadAsistentes;
 	}
-	// IMPLEMENTACION INTERFACE ASESORIA
-	
-	
-	// METODO - MOSTRAR DETALLE
+	@Override
+	public String toString() {
+		return "Capacitacion [idCapacitacion=" + idCapacitacion + ", rutCliente=" + rutCliente + ", dia=" + dia
+				+ ", hora=" + hora + ", lugar=" + lugar + ", duracion=" + duracion + ", cantidadAsistentes="
+				+ cantidadAsistentes + "]";
+	}
+	//----------------------------------------------------------------------------
+	// METODOS
+	//----------------------------------------------------------------------------
+	// MOSTRAR DETALLE
 	public String mostrarDetalle(){ 
 		return "La capacitación será en "+ getLugar() + " a las "+ getHora() + " del día "+ getDia() + ", y durará "+ getDuracion() +" minutos";
 	}
-	
+	// GETTERS & SETTERS
 	public Integer getIdCapacitacion() {
 		return idCapacitacion;
 	}

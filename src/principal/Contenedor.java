@@ -7,50 +7,81 @@ import entidades.Profesional;
 import entidades.Administrativo;
 import entidades.Capacitacion;
 import java.util.*;
-
+/**
+ * En la clase Contenedor se encuentran los métodos principales
+ * @author nbnla
+ *
+ */
 public class Contenedor {
-	// LISTA DE INSTANCIAS DE LA INTERFAZ ASESORIA , PUEDE ALMACENAR DISTINTOS TIPOS DE USUARIOS
+	//----------------------------------------------------------------------------
+	// ATRIBUTOS
+	//----------------------------------------------------------------------------
 	Asesoria cliente, profesional, administrativo;
+	//----------------------------------------------------------------------------
+	// INSTANCIAS
+	//----------------------------------------------------------------------------
 	List<Asesoria> listaAsesoria = new ArrayList<Asesoria>();
+	ArrayList<Capacitacion> listaCapacitacion = new ArrayList<Capacitacion>();
+	Scanner entrada = new Scanner(System.in);
 
-	// 1.- ALMACENAR CLIENTE EN LISTA DE INSTANCIAS INTERFACE ASESORIA
+	/**
+	 * Almacena usuarios de tipo Cliente en la lista de instancias de la interface Asesoria
+	 * @param cliente
+	 */
 	public void almacenarCliente(Asesoria cliente){
 		listaAsesoria.add(cliente);
 	}
-	// 2.- ALMACENAR PROFESIONAL EN LISTA DE INSTANCIAS INTERFACE ASESORIA
+	/**
+	 * Almacena usuarios de tipo Profesional en la lista de instancias de la interface Asesoria
+	 * @param profesional
+	 */
 	public void almacenarProfesional(Asesoria profesional){
 		listaAsesoria.add(profesional);
 	}
-	// 3.- // 1.- ALMACENAR ADMINISTRATIVO EN LISTA DE INSTANCIAS INTERFACE ASESORIA
+	 /**
+	 * Almacena usuarios de tipo Administrativo en la lista de instancias de la interface Asesoria
+	 * @param administrativo
+	 */
 	public void almacenarAdministrativo(Asesoria administrativo){
 		listaAsesoria.add(administrativo);
 	}
-	// 4.- ALMACENAR CAPACITACION EN LISTACAPCITACION
-	ArrayList<Capacitacion> listaCapacitacion = new ArrayList<Capacitacion>();
+	/**
+	 * Permite agregar una nueva capacitacion a la lista de instancias de la interface Asesoria
+	 * @param capacitacion
+	 */
 	public void almacenarCapacitacion(Capacitacion capacitacion){
 		listaCapacitacion.add(capacitacion);
 	}
-	// 5.- ELIMINAR USUARIO
+	/**
+	 * Permite eliminar un usuario utilizando su RUN
+	 * No eliminar el último usuario o se caerá el programa
+	 * @param runn
+	 */
 	public void eliminarUsuario(Integer runn){
 		 for (Asesoria registros : listaAsesoria) {
 			 Usuario user = (Usuario) registros;
 			 if ( runn.equals(user.getRun())) {
-				 listaAsesoria.remove(listaAsesoria.indexOf(user));//int idEliminar = listaAsesoria.indexOf(registros);
+				 listaAsesoria.remove(listaAsesoria.indexOf(user));
 			 }
 		 }
 	}
-	// 6.- LISTAR USUARIOS : Despliegue de los datos de usuario
+	/**
+	 * Despliega la lista completa de usuarios, independiente del tipo.
+	 */
 	public void listarUsuarios(){
 		System.out.println("------- LISTA DE USUARIO  -------");
 		for ( Asesoria registros : listaAsesoria) {
 			Usuario user = (Usuario) registros;
-			System.out.println("Usuario [nombre=" + user.getNombre() + ", feNac=" + user.getFeNac() + ", run=" + user.getRun() + "]");;
+			System.out.println("Usuario [nombre=" + user.getNombre() + ", feNac=" +
+			user.getFeNac() + ", run=" + user.getRun() + "]");;
 		}
 	}
-	// 7.- LISTAR USUARIOS POR TIPO 
-	Scanner entrada = new Scanner(System.in);
+	/**
+	 * Se despliegan los datos de usuarios según tipo de usuario (Cliemte, Profesional y Administrativo)
+	 * 
+	 */
 	public void listarUsuariosPorTipo(){
-		// Recibe un tipo de usuario ( cliente, administrador o profesional)
+	
 		System.out.println("------- LISTA DE USUARIO POR TIPO  DE PERFIL -------");
 		System.out.println(" 1.- CLIENTE");
 		System.out.println(" 2.- PROFESIONAL");
@@ -70,19 +101,19 @@ public class Contenedor {
 					}
 				}
 				break;
-			case 2:
+			case 2: // PERFIL PROFESIONAL
 				for ( Asesoria profesional : listaAsesoria) {
 					// Identificar que tipo de perfil ha sido 
-					tipoPerfil = cliente.getClass().toString();
+					tipoPerfil = profesional.getClass().toString();
 					if ( tipoPerfil.contains("Profesional")) {
 						System.out.println(profesional.toString());
 					}
 				}
 				break;
-			case 3:
+			case 3: // PERFIL ADMINISTRATIVO
 				for ( Asesoria administrativo : listaAsesoria) {
 					// Identificar que tipo de perfil ha sido 
-					tipoPerfil = cliente.getClass().toString();
+					tipoPerfil = administrativo.getClass().toString();
 					if ( tipoPerfil.contains("Administrativo")) {
 						System.out.println(administrativo.toString());
 					}
@@ -93,20 +124,20 @@ public class Contenedor {
 				break;
 			}
 	}
-	// 8.- LISTAR CAPACITACIONES
+	/**
+	 * Este metodo despliega las capacitaciones registradas en la lista respectiva
+	 * junto con los datos del cliente al que está asociada dicha capacitacion
+	 */
 	public void listarCapacitaciones(){
-		// Este metidi despliega las capacitaciones registradas en la lista respectiva,
-		// junto con los datos del cliente al que está asociada dicha capacitacion 
+		Cliente cli = new Cliente();
 		for ( Capacitacion capAux : listaCapacitacion  ) {
 			System.out.println(capAux.toString());
-			Cliente cli = new Cliente();
-			if( capAux.getRutCliente() == cli.getRut()) {
-				System.out.println(cli.toString());
+			for (Asesoria usuarios : listaCapacitacion) {
+				if( capAux.getRutCliente() == cli.getRut()) {
+					System.out.println(cli.toString());
+				}
 			}
 		}
 	}
-	// RESTRICCIONES
-	
-
-
 }
+	

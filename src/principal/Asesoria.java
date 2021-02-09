@@ -1,10 +1,10 @@
 package principal;
-
-import java.util.*;
+/**
+ * Interface Asesoria tiene asociado el método analizarUsuario
+ * @author nbnla
+ *
+ */
 
 public interface Asesoria {
 	public void analizarUsuario();
-	public void mostrar();
-
-	
 }

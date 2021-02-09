@@ -1,16 +1,31 @@
 package entidades;
 import java.util.*;
-
 import principal.Asesoria;
+/**
+ * La clase Usuario es la clase padre de Cliente, Profesional y Administrativo.
+ * Tiene los siguientes métodos asociados: analizarUsuario, mostrar y mostrarEdad
+ * @author nbnla
+ *
+ */
 
-// CLASE DEBE IMPLEMENTAR LA INTERFAZ Asesoria
 public class Usuario implements Asesoria{
+	//----------------------------------------------------------------------------
 	// ATRIBUTOS
+	//----------------------------------------------------------------------------
 	private String nombre;  // obligatorio, min 10 car max 50
 	private String feNac; //obligaatorio, data o string no matter, DD/MM/AAAA
 	private Integer run; // run < 99.999.999	
-	// CONSTRUCTOR VACIO
+	
+	//----------------------------------------------------------------------------
+	// CONSTRUCTORES
+	//----------------------------------------------------------------------------
+
 	public Usuario() {
+	}
+	// EL CONSTRUCTOR MINIMO CON SUS ATRIBUTOS OBLIGATORIOS
+	public Usuario(String nombre, String feNac) {
+		this.nombre = nombre;
+		this.feNac = feNac;
 	}
 	// CONSTRUCTOR COMPLETO
 	public Usuario(String nombre, String feNac, Integer run) {
@@ -23,7 +38,11 @@ public class Usuario implements Asesoria{
 	public String toString() {
 		return "Usuario [nombre=" + nombre + ", feNac=" + feNac + ", run=" + run + "]";
 	}
+	
+	//----------------------------------------------------------------------------
 	// IMPLEMENTACION INTERFACE ASESORIA
+	//----------------------------------------------------------------------------
+	
 	@Override
 	public void analizarUsuario() {
 		// TODO Auto-generated method stub
@@ -31,8 +50,12 @@ public class Usuario implements Asesoria{
 		System.out.print( "Nombre: "+ getNombre() + "RUN: "+ getRun());
 		System.out.println("..                                               ..");
 	}
+	
+	//----------------------------------------------------------------------------
+	// METODOS
+	//----------------------------------------------------------------------------
+	
 	// MOSTRAR
-	@Override
 	public void mostrar() {
 		System.out.println("Usuario[ Nombre:"+ getNombre() +", Fecha de Nacimiento: "+ getFeNac()+ ", RUN: "+ getRun()+ "]");
 		}
@@ -50,7 +73,7 @@ public class Usuario implements Asesoria{
 		return nombre;
 	}
 
-	public void setNombre(String nombre) { // obligatorio, min 10 car max 50
+	public void setNombre(String nombre) { 
 		this.nombre = nombre;
 
 	}
@@ -59,7 +82,7 @@ public class Usuario implements Asesoria{
 		return feNac;
 	}
 
-	public void setFeNac(String feNac) {  //obligatorio, data o string no matter, DD/MM/AAAA
+	public void setFeNac(String feNac) { 
 		this.feNac = feNac;
 	}
 	
@@ -71,5 +94,4 @@ public class Usuario implements Asesoria{
 		this.run = run;
 	}
 
-	
 }

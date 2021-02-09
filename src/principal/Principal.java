@@ -2,9 +2,12 @@ package principal;
 import java.util.*;
 import principal.Vista;
 /**
+ * La clase Principal es justamente la clase central, donde se estructura
+ * el software, contiene el menú principal de operaciones. 
  * 
- * @author nbnla
- *
+ * @author Nicolás Andrés Bonilla Marín
+ * @version v1
+ * @
  */
 
 public class Principal {
@@ -73,7 +76,8 @@ public class Principal {
 				System.out.println("Debe ingresar una opción válida!");
 				break;
 			}
-		}while ( repetir );	
+		}while ( repetir );
+		System.exit(0);
 	}
 }
 
