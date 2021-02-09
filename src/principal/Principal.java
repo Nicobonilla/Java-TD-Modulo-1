@@ -1,13 +1,11 @@
 package principal;
-import java.text.SimpleDateFormat;
 import java.util.*;
-import entidades.Usuario;
-import entidades.Cliente;
-import entidades.Profesional;
-import entidades.Administrativo;
-import entidades.Capacitacion;
-import principal.Contenedor;
-
+import principal.Vista;
+/**
+ * 
+ * @author nbnla
+ *
+ */
 
 public class Principal {
 
@@ -19,6 +17,7 @@ public class Principal {
 		// MENU PRINCIPAL
 		Integer opMenu = 0;
 		boolean repetir = true;
+		Vista vista = new Vista();
 		do {
 			System.out.println("");
 			System.out.println("");
@@ -39,28 +38,18 @@ public class Principal {
 			System.out.println("''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''");
 			System.out.print("OPCIÓN: ");
 			opMenu = entrada.nextInt();
-		
-		Asesoria cliente, profesional, administrativo;
 		switch (opMenu) {
 			case 1 : //ALMACENAR CLIENTE
-				cliente = new Cliente();
-				cliente.ingresar();
-				contenedor.almacenarCliente(cliente);
+				contenedor.almacenarCliente(vista.ingresarCliente(vista.ingresarUsuario()));
 				break;
 			case 2 : // ALMACENAR PROFESIONAL
-				profesional = new Profesional();
-				profesional.ingresar();
-				contenedor.almacenarProfesional(profesional);
+				contenedor.almacenarProfesional(vista.ingresarProfesional(vista.ingresarUsuario()));
 				break;
 			case 3 : // ALMACENAR ADMINISTRATIVO
-				administrativo = new Administrativo();
-				administrativo.ingresar();
-				contenedor.almacenarAdministrativo(administrativo);
+				contenedor.almacenarAdministrativo(vista.ingresarAdministrativo(vista.ingresarUsuario()));
 				break;
 			case 4 : // ALMACENAR CAPACITACION
-				Capacitacion capacitacion = new Capacitacion();
-				capacitacion.ingresar();
-				contenedor.almacenarCapacitacion(capacitacion );
+				contenedor.almacenarCapacitacion(vista.ingresarCapacitacion());
 				break;
 			case 5 : // ELIMINAR USUARIO
 				System.out.print("INGRESE RUN DE USUARIO A ELIMINAR: ");

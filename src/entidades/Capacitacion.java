@@ -36,24 +36,7 @@ public class Capacitacion extends Usuario implements Asesoria {
 		this.cantidadAsistentes = cantidadAsistentes;
 	}
 	// IMPLEMENTACION INTERFACE ASESORIA
-	Scanner entrada = new Scanner(System.in);
-	@Override
-	public void ingresar() {
-		System.out.println("----- INGRESANDO NUEVA CAPACITACIÓN ----- ");
-		setIdCapacitacion(idCapacitacion);
-		System.out.print("RUT CLIENTE: ");
-		setRutCliente(entrada.nextInt());
-		System.out.print("DIA: ");
-		setDia(entrada.next());
-		System.out.print("HORA: ");
-		setHora(entrada.next());
-		System.out.print("LUGAR: ");
-		setLugar(entrada.nextLine());
-		System.out.print("DURACION: ");
-		setDuracion(entrada.next());
-		System.out.print("CANTIDAD ASISTENTES:: ");
-		setRutCliente(entrada.nextInt());
-	}
+	
 	
 	// METODO - MOSTRAR DETALLE
 	public String mostrarDetalle(){ 

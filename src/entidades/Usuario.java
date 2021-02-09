@@ -9,7 +9,6 @@ public class Usuario implements Asesoria{
 	private String nombre;  // obligatorio, min 10 car max 50
 	private String feNac; //obligaatorio, data o string no matter, DD/MM/AAAA
 	private Integer run; // run < 99.999.999	
-	private Scanner entrada = new Scanner(System.in);
 	// CONSTRUCTOR VACIO
 	public Usuario() {
 	}
@@ -32,16 +31,6 @@ public class Usuario implements Asesoria{
 		System.out.print( "Nombre: "+ getNombre() + "RUN: "+ getRun());
 		System.out.println("..                                               ..");
 	}
-	// METODOS - INGRESAR
-	public void ingresar() {
-		System.out.println("----- NUEVO USUARIO ----- ");
-		System.out.print("NOMBRE: ");
-		setNombre(entrada.nextLine());
-		System.out.print("FECHA DE NACIMIENTO: ");
-		setFeNac(entrada.nextLine());
-		System.out.print("RUN: ");
-		setRun(entrada.nextInt());
-		}
 	// MOSTRAR
 	@Override
 	public void mostrar() {

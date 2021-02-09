@@ -27,18 +27,7 @@ public class Administrativo extends Usuario {
 		System.out.println("TIPO DE USUARIO: ADMINISTRATIVO");
 		System.out.println("Área="+ getArea()+ ", Experiencia Previa="+ getExperienciaPrevia());
 	}
-	// METODOS - INGRESAR
-	@Override
-	public void ingresar() {
-		Scanner entrada = new Scanner(System.in);
-		super.ingresar();
-		entrada.nextLine();
-		System.out.println("----- INGRESANDO DATOS PERFIL ADMINISTRATIO ----- ");
-		System.out.print("ÁREA: ");
-		setArea(entrada.nextLine());
-		System.out.print("EXPERIENCIA PREVIA: ");
-		setExperienciaPrevia(entrada.next());
-	}
+
 	// MOSTRAR
 	public void mostrar() {
 		super.mostrar();

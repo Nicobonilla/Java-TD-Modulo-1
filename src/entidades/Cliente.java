@@ -1,5 +1,4 @@
 package entidades;
-import java.util.*;
 
 public class Cliente extends Usuario{
 	// ATRIBUTOS
@@ -45,34 +44,6 @@ public class Cliente extends Usuario{
 	super.analizarUsuario();
 		System.out.println("TIPO DE USUARIO: CLIENTE");
 		System.out.println( "Dirección="+ getDireccion()+ ", Comuna="+ getComuna() + " ]");
-	}
-	// METODOS - INGRESAR
-	Scanner entrada = new Scanner(System.in);
-	@Override
-	public void ingresar() {
-		super.ingresar();
-		System.out.println("----- INGRESANDO DATOS PERFIL CLIENTE ----- ");
-		System.out.print("RUT: "); 
-		setRut(entrada.nextInt());
-		entrada.nextLine();
-		System.out.print("Nombres: ");
-		setNombres(entrada.nextLine());
-		System.out.print("Apellidos: ");
-		setApellidos(entrada.nextLine());
-		System.out.print("Telefono: ");
-		setTelefono(entrada.nextLine());
-		System.out.print("AFP: ");
-		setAfp(entrada.nextLine());
-		System.out.print("Sistema de Salud (1: Fonasa - 2 : Isapre ) : ");
-		setSisSalud(entrada.nextInt());
-		entrada.nextLine();
-		System.out.print("Dirección: ");
-		setDireccion(entrada.nextLine());
-		System.out.print("Comuna: ");
-		setComuna(entrada.nextLine());
-		System.out.print("Edad: ");
-		setEdad(entrada.nextInt()); 
-		entrada.nextLine();
 	}
 	// MOSTRAR
 	@Override
@@ -176,10 +147,5 @@ public class Cliente extends Usuario{
 	public void setEdad(Integer edad) {
 		this.edad = edad;
 	}
-	
-	
-	
-
-
 
 }

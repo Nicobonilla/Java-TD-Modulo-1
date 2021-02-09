@@ -1,7 +1,5 @@
 package entidades;
 
-import java.util.Scanner;
-
 public class Profesional extends Usuario {
 	// ATRIBUTOS
 	private String titulo; // obligatorio, min 10 car, max 50
@@ -28,18 +26,6 @@ public class Profesional extends Usuario {
 		super.analizarUsuario();
 		System.out.println("TIPO DE USUARIO: PROFESIONAL");
 		System.out.println(" Titulo="+ getTitulo()+ ", Fecha de Ingreso="+ getFeIngreso()+ "]");
-	}
-	// METODOS - INGRESAR
-	@Override
-	public void ingresar() {
-		Scanner entrada = new Scanner(System.in);
-		super.ingresar();
-		entrada.nextLine();
-		System.out.println("----- INGRESANDO DATOS PERFIL PROFESIONAL ----- ");
-		System.out.print("TITULO: ");
-		setTitulo(entrada.nextLine());
-		System.out.print("FECHA DE INGRESO: ");
-		setFeIngreso(entrada.next());
 	}
 	// MOSTRAR
 	public void mostrar() {
